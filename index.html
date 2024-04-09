@@ -34,6 +34,7 @@
             display: flex;
             align-items: center;
         }
+        
         .menu ul {
             list-style-type: none;
             margin: 0;
@@ -161,6 +162,15 @@
             font-weight: bold;
             font-size: 16px;
         }
+        .bold-color{
+            color: #0056b3;
+            font-weight: 600;
+        }
+        ol li{
+            color: black;
+            font-weight:400;
+        }
+
         @media screen and (max-width: 600px) {
             .container {
                 padding: 10px;
@@ -230,7 +240,7 @@
                     Here is some information about our platform and how to use it:
                 </p>
                 <ul>
-                    <li>Text to Speech <ol>
+                    <li class="bold-color">Text to Speech <ol>
                         <li>specify the type of input (file or enter text)</li>
                         <li class="conditions">file type - Only ".txt" file allowed</li>
                         <li>Specify the language of input text</li>
@@ -238,13 +248,13 @@
                         <li>click Download audio and wait</li>
                         <li>Reset - clear all inputs</li>
                     </ol></li>
-                    <li>Speech to Text <ol>
+                    <li class="bold-color">Speech to Text <ol>
                         <li class="conditions">Only English language is allowed </li>
                         <li>Upload mp3 file</li>
                         <li class="conditions">audio time upto 4:30mins</li>
                         <li>click convert and wait</li>
                     </ol></li>
-                    <li>Audio to Text
+                    <li class="bold-color">Audio to Text
                         <ol>
                         <li>Only English language is allowed</li>
                         <li class="conditions">if browser ask permission to use microphones click allow to proceed</li>
