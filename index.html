@@ -28,6 +28,7 @@
             font-size: 24px;
             font-weight: 700;
             color: #444;
+            cursor: pointer;
         }
         .menu {
             display: flex;
@@ -49,10 +50,54 @@
             font-size: 18px;
             border-bottom: 2px solid transparent;
             transition: border-color 0.3s ease;
+            cursor: pointer;
         }
         .menu ul li a:hover {
             color: #000;
             border-color: #000;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            cursor: pointer;
+           
+            
+            background-color: #fefefe;
+            border-radius: 0 5px 0 5px;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
         .content {
             padding: 20px;
@@ -61,6 +106,8 @@
             margin-bottom: 20px;
             background-color: #4d949f; 
             color: white;
+            position: relative;
+            overflow: hidden;
         }
         .content:before {
             content: "";
@@ -77,6 +124,7 @@
             line-height: 1.6;
             font-size: 18px;
             color: #fff;
+            animation: fade-in 1s ease;
         }
         .content p:last-child {
             margin-bottom: 0;
@@ -139,10 +187,6 @@
                 min-width: 150px;
             }
         }
-        .content {
-            position: relative;
-            overflow: hidden;
-        }
         .content img {
             max-width: 100%;
             height: auto;
@@ -155,8 +199,12 @@
         .content img:hover {
             transform: scale(1.05);
         }
-        .content p {
-            animation: fade-in 1s ease;
+        .conditions {
+            color: #FF0000;
+        }
+        .about {
+            padding: 5px 10px;
+            margin-top: -10px;
         }
         @keyframes fade-in {
             from { opacity: 0; }
@@ -170,7 +218,41 @@
             <div class="logo">Multimodal Harmony</div>
             <div class="menu">
                 <ul>
-                    <li><a href="#" class="home">Home</a></li>
+                    <li><a href="#" class="about">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="modal" id="aboutModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>About Us</h2>
+                <p>
+                    Here is some information about our platform and how to use it:
+                </p>
+                <ul>
+                    <li>Text to Speech <ol>
+                        <li>specify the type of input (file or enter text)</li>
+                        <li class="conditions">file type - Only ".txt" file allowed</li>
+                        <li>Specify the language of input text</li>
+                        <li>Enter the name of outfile audio file you wish to download</li>
+                        <li>click Download audio and wait</li>
+                        <li>Reset - clear all inputs</li>
+                    </ol></li>
+                    <li>Speech to Text <ol>
+                        <li class="conditions">Only English language is allowed </li>
+                        <li>Upload mp3 file</li>
+                        <li class="conditions">audio time upto 4:30mins</li>
+                        <li>click convert and wait</li>
+                    </ol></li>
+                    <li>Audio to Text
+                        <ol>
+                        <li>Only English language is allowed</li>
+                        <li class="conditions">if browser ask permission to use microphones click allow to proceed</li>
+                        <li>click start Recording and speak in english</li>
+                        <li>click stop Recording once completed</li>
+                        
+                        <li>to download click Download button </li>
+                    </ol></li>
                 </ul>
             </div>
         </div>
@@ -183,8 +265,32 @@
             <button><a href="https://miniproject.pythonanywhere.com/">Text to Speech</a></button>
             <button><a href="https://speechtotext.pythonanywhere.com/">Speech to Text</a></button>
             <button><a href="https://miniproject.neocities.org/">Audio to Text</a></button>
-            <button><a href="#">Image Generation</a></button>
         </div>
     </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('aboutModal');
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        document.querySelector('.about').onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
